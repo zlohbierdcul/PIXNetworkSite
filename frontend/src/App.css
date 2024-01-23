@@ -42,7 +42,7 @@ body {
     transform: translateY(-15px);
     text-decoration: none;
     user-select: none;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .title-dots span:nth-child(1) { 
@@ -104,4 +104,15 @@ body {
   .title-dots span:nth-child(6) { 
     letter-spacing: 12.72px; 
   }
+}
+
+.category-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.category-skeleton {
+  width: 100%;
 }

@@ -1,0 +1,16 @@
+{
+    "General": {
+        "Figma": {
+            "url": "https://figma.com",
+            "faviconURL": "https://static.figma.com/app/icon/1/touch-76.png"
+        },
+        "Google": {
+            "url": "https://google.com",
+            "faviconURL": "https://google.com/favicon.ico"
+        },
+        "Facebook": {
+            "url": "https://facebook.com",
+            "faviconURL": "https://static.xx.fbcdn.net/rsrc.php/yv/r/B8BxsscfVBr.ico"
+        }
+    }
+}

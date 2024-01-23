@@ -1,0 +1,26 @@
+{
+    "General": {
+        "Figma": {
+            "url": "https://figma.com",
+            "faviconURL": ""
+        },
+        "Google": {
+            "url": "https://google.com",
+            "faviconURL": ""
+        },
+        "Facebook": {
+            "url": "https://facebook.com",
+            "faviconURL": ""
+        },
+        "Youtube": {
+            "url": "https://youtube.com",
+            "faviconURL": ""
+        }
+    },
+    "Cool shit": {
+        "Gitea": {
+            "url": "https://gitea.com",
+            "faviconURL": ""
+        }
+    }
+}
