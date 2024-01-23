@@ -1,0 +1,51 @@
+.app-btn {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.35rem;
+    border: 2px solid #3cb757;
+    background: #353535;
+    flex-direction: column;
+    gap: 0.425rem;
+    box-shadow: 0px 0px 20px -3px rgba(117, 117, 117, 0.25);
+    transition: all 0.3s ease-in-out; 
+}
+
+.app-btn:hover {
+    box-shadow: 0px 0px 30px -6px rgba(68, 68, 68, 0.25);
+    scale: 1.05; 
+    cursor: pointer;
+}
+
+.app-btn:hover span {
+    color: #afafaf;
+
+}
+
+.app-btn img {
+    width: 3.4375rem;
+    height: 3.4375rem;
+}
+
+.app-btn span {
+    color: #8f8f8f;
+    text-align: center;
+    font-family: K2D;
+    font-size: 0.8125rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    transition: all 0.3s ease-in-out;
+
+}
+
+
+@media (max-width: 576px) {
+    .app-btn {
+        width: 100%;
+        aspect-ratio: 1/1;
+    }
+}

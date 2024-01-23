@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace&family=K2D:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Flow+Block&family=K2D:wght@500&display=swap');
+
+.hidden {
+  display: none !important;
+}
+
+body {
+    background-color: #141414;
+    margin: 1rem;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+    text-align: center;
+    color: #af70cc;
+    font-size: 48px;
+    font-family: Bruno Ace;
+    font-weight: 400;
+    word-wrap: break-word;
+    text-decoration: none;
+    user-select: none;
+}
+
+.title span:nth-child(2) {
+    color: #727272;
+}
+
+.title-dots {
+    color: #727272;
+    font-size: 24px;
+    font-family: Flow Block;
+    font-weight: 400;
+    letter-spacing: 16.56px;
+    word-wrap: break-word;
+    text-align: center;
+    transform: translateY(-15px);
+    text-decoration: none;
+    user-select: none;
+    margin-bottom: 2rem;
+}
+
+.title-dots span:nth-child(1) { 
+  padding-left: 10px;
+  letter-spacing: 16.56px; 
+  color: #af70cc;
+}
+.title-dots span:nth-child(2) { 
+  letter-spacing: 26.40px; 
+  color: #af70cc;
+}
+.title-dots span:nth-child(3) { 
+  letter-spacing: 17.52px; 
+}
+.title-dots span:nth-child(4) { 
+  letter-spacing: 24.72px; 
+}
+.title-dots span:nth-child(4) { 
+  letter-spacing: 34.32px; 
+}
+.title-dots span:nth-child(5) { 
+  letter-spacing: 18.24px; 
+}
+.title-dots span:nth-child(6) { 
+  letter-spacing: 24.72px; 
+}
+
+@media (max-width: 576px) {
+  .title {
+    font-size: 24px;
+  }
+
+  .title-dots {
+    font-size: 10px;
+    transform: translateY(0px);
+  }
+
+  .title-dots span:nth-child(1) { 
+    padding-left: 10px;
+    letter-spacing: 8.56px; 
+    color: #af70cc;
+  }
+  .title-dots span:nth-child(2) { 
+    letter-spacing: 13.40px; 
+    color: #af70cc;
+  }
+  .title-dots span:nth-child(3) { 
+    letter-spacing: 8.52px; 
+  }
+  .title-dots span:nth-child(4) { 
+    letter-spacing: 12.72px; 
+  }
+  .title-dots span:nth-child(4) { 
+    letter-spacing: 17.32px; 
+  }
+  .title-dots span:nth-child(5) { 
+    letter-spacing: 9.24px; 
+  }
+  .title-dots span:nth-child(6) { 
+    letter-spacing: 12.72px; 
+  }
+}
