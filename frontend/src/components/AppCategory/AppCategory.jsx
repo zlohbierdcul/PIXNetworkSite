@@ -1,6 +1,6 @@
 import './AppCategory.css';
 import IconButton from '@mui/material/IconButton';
-
+import { useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
@@ -8,13 +8,42 @@ import AddIcon from '@mui/icons-material/Add';
 import AddAppModal from '../AddAppModal/AddAppModal';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-function AppCategory({ title, handleAdd, handleDelete, isEdit, children }) {
+function AppCategory({
+    title,
+    handleAdd,
+    handleDelete,
+    handleEdit,
+    isEdit,
+    children,
+}) {
+    const initialTitle = title;
+
     const [expanded, setExpanded] = useState(true);
     const [showAddApp, setShowAddApp] = useState(false);
 
     const addAppHandler = (name, url, color) => {
         handleAdd(name, url, color, title);
     };
+
+    const blurHandler = (e) => {
+        if (e.target.innerHTML !== initialTitle)
+            handleEdit(initialTitle, e.target.innerHTML);
+    };
+
+    useLayoutEffect(() => {
+        const contentTitle = document.querySelector('#' + title);
+
+        contentTitle.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter' || e.keyCode === 13)
+                return e.preventDefault();
+
+            let regex = /^[A-Za-z0-9]+$/;
+
+            if (!regex.test(e.target.innerHTML)) {
+                return (e.target.innerHTML = e.target.textContent.replace(/[^A-Za-z0-9]+/, ""));
+            }
+        });
+    }, [title]);
 
     return (
         <div className='category'>
@@ -23,7 +52,14 @@ function AppCategory({ title, handleAdd, handleDelete, isEdit, children }) {
                 setShow={setShowAddApp}
                 addHandler={addAppHandler}
             ></AddAppModal>
-            <div className='category-title'>{title}</div>
+            <div
+                id={title}
+                className='category-title'
+                onBlur={(e) => blurHandler(e)}
+                contentEditable={isEdit}
+            >
+                {title}
+            </div>
             <div className='button-container'>
                 <IconButton
                     size='small'
@@ -45,7 +81,8 @@ function AppCategory({ title, handleAdd, handleDelete, isEdit, children }) {
                         variant='secondary'
                         size='small'
                         sx={{
-                            marginX: '.5rem',
+                            transform: `scale(${isEdit ? "1" : "0"})`,
+                            margin: '0.4065rem',
                             background: '#343434',
                             '&:hover': {
                                 background: '#3a3a3a',
@@ -94,6 +131,7 @@ AppCategory.propTypes = {
     title: PropTypes.string.isRequired,
     handleAdd: PropTypes.func.isRequired,
     handleDelete: PropTypes.func.isRequired,
+    handleEdit: PropTypes.func.isRequired,
     isEdit: PropTypes.bool.isRequired,
     children: PropTypes.node,
 };

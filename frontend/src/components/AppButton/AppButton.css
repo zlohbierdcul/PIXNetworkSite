@@ -11,18 +11,17 @@
     flex-direction: column;
     gap: 0.425rem;
     box-shadow: 0px 0px 20px -3px rgba(117, 117, 117, 0.25);
-    transition: all 0.3s ease-in-out; 
+    transition: all 0.3s ease-in-out;
 }
 
 .app-btn:hover {
     box-shadow: 0px 0px 30px -6px rgba(68, 68, 68, 0.25);
-    scale: 1.05; 
+    scale: 1.05;
     cursor: pointer;
 }
 
 .app-btn:hover span {
     color: #afafaf;
-
 }
 
 .app-btn img {
@@ -39,9 +38,7 @@
     font-weight: 600;
     line-height: normal;
     transition: all 0.3s ease-in-out;
-
 }
-
 
 @media (max-width: 576px) {
     .app-btn {
@@ -52,4 +49,20 @@
     .outter-app {
         width: 100%;
     }
+}
+
+.edit-btn-container {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0px;
+    border-radius: .35rem;
+    transition: all 0.2s ease-in;
 }

@@ -4,8 +4,20 @@ import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import PropTypes from 'prop-types';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
-const AppButton = ({ title, url, iconURL, color, isEdit, handleDelete }) => {
+const AppButton = ({ title, url, iconURL, category, color, isEdit, handleDelete, setShowEdit, setAppInfo }) => {
+    const handleEditClick = () => {
+        const info = {
+            category: category,
+            title: title,
+            url: url,
+            faviconURL: iconURL,
+            color: color
+        }
+        setAppInfo(info)
+        setShowEdit(true)
+    }
     return (
         <div
             className='outter-app'
@@ -46,26 +58,50 @@ const AppButton = ({ title, url, iconURL, color, isEdit, handleDelete }) => {
                     <span>{title}</span>
                 </div>
             </Tooltip>
-            <IconButton
-                variant='secondary'
-                size='small'
-                sx={{
-                    scale: isEdit ? 1 : 0,
-                    position: 'absolute',
-                    top: -15,
-                    right: -15,
-                    background: '#dd5151',
-                    '&:hover': {
-                        background: '#ff5151',
-                        scale: '1.05',
-                    },
-                    color: '#121212',
-                    transition: 'all 0.3s ease-in-out',
+            <div
+                className='edit-btn-container'
+                style={{
+                    pointerEvents: isEdit ? "auto" : "none",
+                    backgroundColor: isEdit ? '#353535b7' : 'transparent',
                 }}
-                onClick={handleDelete}
             >
-                <DeleteIcon />
-            </IconButton>
+                <IconButton
+                    variant='secondary'
+                    size='small'
+                    sx={{
+                        scale: isEdit ? 1 : 0,
+                        background: '#dd5151',
+
+                        '&:hover': {
+                            background: '#ff5151',
+                            scale: '1.05',
+                        },
+                        color: '#121212',
+                        transition: 'all 0.3s ease-in-out',
+                    }}
+                    onClick={handleDelete}
+                >
+                    <DeleteIcon />
+                </IconButton>
+                <IconButton
+                    variant='secondary'
+                    size='small'
+                    sx={{
+                        scale: isEdit ? 1 : 0,
+                        background: '#505050',
+
+                        '&:hover': {
+                            background: '#5a5a5a',
+                            scale: '1.05',
+                        },
+                        color: '#121212',
+                        transition: 'all 0.3s ease-in-out',
+                    }}
+                    onClick={handleEditClick}
+                >
+                    <EditIcon />
+                </IconButton>
+            </div>
         </div>
     );
 };
@@ -73,10 +109,14 @@ const AppButton = ({ title, url, iconURL, color, isEdit, handleDelete }) => {
 AppButton.propTypes = {
     title: PropTypes.node.isRequired,
     url: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
     iconURL: PropTypes.string.isRequired,
     handleDelete: PropTypes.func.isRequired,
-    color: PropTypes.array,
+    color: PropTypes.arrayOf(PropTypes.number),
     isEdit: PropTypes.bool,
+    setShowEdit: PropTypes.func,
+    setAppInfo: PropTypes.func,
 };
 
 export default AppButton;
+

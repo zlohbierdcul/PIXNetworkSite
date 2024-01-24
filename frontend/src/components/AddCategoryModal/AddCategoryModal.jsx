@@ -56,7 +56,7 @@ const AddCategoryModal = ({ show, setShow, addHandler }) => {
                         alignItems: 'start',
                     }}
                 >
-                    <div className='addapptitle'>Add new app</div>
+                    <div className='addapptitle'>Add new category</div>
                     <IconButton
                         sx={{
                             float: 'right',
