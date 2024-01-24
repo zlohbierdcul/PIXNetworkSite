@@ -6,14 +6,15 @@ import CasinoIcon from '@mui/icons-material/Casino';
 import './AddAppModal.css';
 import PropTypes from 'prop-types';
 
-const urlRegex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/
+const urlRegex =
+    /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/;
 
 const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: 450,
     bgcolor: '#232323',
     border: '2px solid #000',
     boxShadow: 24,
@@ -40,7 +41,7 @@ const AddAppModal = ({ show, setShow, addHandler }) => {
     const handleAdd = () => {
         if (name.length === 0) setNameError(true);
         if (url.length === 0) setUrlError(true);
-        
+
         if (!urlRegex.test(url)) {
             return setUrlError(true);
         }
@@ -55,7 +56,10 @@ const AddAppModal = ({ show, setShow, addHandler }) => {
             open={show}
             onClose={handleClose}
         >
-            <Box sx={style}>
+            <Box
+                sx={style}
+                className={'addapp-modal'}
+            >
                 <div
                     style={{
                         display: 'flex',
@@ -95,14 +99,28 @@ const AddAppModal = ({ show, setShow, addHandler }) => {
                     error={urlError}
                     onChange={(e) => setUrl(e.target.value)}
                 />
-                <div style={{ display: 'flex', gap: '1rem', flexGrow: 1 }}>
+                <div
+                    style={{
+                        display: 'flex',
+                        gap: '1rem',
+                        flexWrap: 'wrap',
+                        minWidth: 0,
+                        minHeight: 0,
+                    }}
+                >
                     <TextField
                         label='R'
                         type='number'
                         inputProps={{ min: 0, max: 255 }}
                         value={colorR}
                         color='secondary'
-                        sx={{ background: '#323232', borderRadius: '5px' }}
+                        sx={{
+                            background: '#323232',
+                            borderRadius: '5px',
+                            minWidth: '50px',
+                            maxWidth: "90px",
+                            flexGrow: 2,
+                        }}
                         onChange={(e) => setColorR(e.target.value)}
                     />
                     <TextField
@@ -111,7 +129,13 @@ const AddAppModal = ({ show, setShow, addHandler }) => {
                         inputProps={{ min: 0, max: 255 }}
                         value={colorG}
                         color='secondary'
-                        sx={{ background: '#323232', borderRadius: '5px' }}
+                        sx={{
+                            background: '#323232',
+                            borderRadius: '5px',
+                            minWidth: '50px',
+                            maxWidth: "90px",
+                            flexGrow: 2,
+                        }}
                         onChange={(e) => setColorG(e.target.value)}
                     />
                     <TextField
@@ -120,15 +144,21 @@ const AddAppModal = ({ show, setShow, addHandler }) => {
                         inputProps={{ min: 0, max: 255 }}
                         value={colorB}
                         color='secondary'
-                        sx={{ background: '#323232', borderRadius: '5px' }}
+                        sx={{
+                            background: '#323232',
+                            borderRadius: '5px',
+                            minWidth: '50px',
+                            maxWidth: "90px",
+                            flexGrow: 2,
+                        }}
                         onChange={(e) => setColorB(e.target.value)}
                     />
                     <div
                         style={{
                             height: '56px',
                             borderRadius: '5px',
-                            flexGrow: 1,
-                            minWidth: "35px",
+                            minWidth: '50px',
+                            flexGrow: 3,
                             background: `rgb(${colorR}, ${colorG}, ${colorB})`,
                         }}
                     ></div>
@@ -137,6 +167,7 @@ const AddAppModal = ({ show, setShow, addHandler }) => {
                         sx={{
                             background: '#9c27b0',
                             '&:hover': { background: '#7b1fa2' },
+                            flexGrow: 1,
                         }}
                         variant='primary'
                         onClick={() => {

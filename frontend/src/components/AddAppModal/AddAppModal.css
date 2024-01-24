@@ -1,3 +1,10 @@
 .addapptitle {
     color: #101010;
 }
+
+@media (max-width: 567px) {
+    .addapp-modal {
+        width: 76% !important;
+        
+    }
+}
