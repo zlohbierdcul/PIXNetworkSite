@@ -22,7 +22,7 @@ app.use(cors(corsOptions))
 
 app.get("/api/getAppData", async (req, res) => {
     await fetchAllApps()
-    const appdata = require("./data/newappdata.json")
+    const appdata = require("./data/appdata.json")
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(appdata));
 })

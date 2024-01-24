@@ -6,6 +6,8 @@ import CasinoIcon from '@mui/icons-material/Casino';
 import './AddAppModal.css';
 import PropTypes from 'prop-types';
 
+const urlRegex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/
+
 const style = {
     position: 'absolute',
     top: '50%',
@@ -38,6 +40,10 @@ const AddAppModal = ({ show, setShow, addHandler }) => {
     const handleAdd = () => {
         if (name.length === 0) setNameError(true);
         if (url.length === 0) setUrlError(true);
+        
+        if (!urlRegex.test(url)) {
+            return setUrlError(true);
+        }
         if (name.length > 0 && url.length > 0) {
             addHandler(name, url, [colorR, colorG, colorB]);
             handleClose();
@@ -130,7 +136,6 @@ const AddAppModal = ({ show, setShow, addHandler }) => {
                         sx={{
                             background: '#9c27b0',
                             '&:hover': { background: '#7b1fa2' },
-
                         }}
                         variant='primary'
                         onClick={() => {
@@ -176,6 +181,5 @@ AddAppModal.propTypes = {
     setShow: PropTypes.func.isRequired,
     addHandler: PropTypes.func.isRequired,
 };
-
 
 export default AddAppModal;
