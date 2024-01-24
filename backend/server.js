@@ -27,6 +27,12 @@ app.get("/api/getAppData", async (req, res) => {
     res.end(JSON.stringify(appdata));
 })
 
+app.post("/api/updateAppData", async (req, res) => {
+    const appData = req.body.appData;
+
+    fs.writeFileSync("./data/appdata.json", JSON.stringify(appData))
+})
+
 /**
  * Logs the port on which the server is currently listening.
  */

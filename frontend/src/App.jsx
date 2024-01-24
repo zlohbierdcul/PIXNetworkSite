@@ -1,7 +1,7 @@
 import './App.css';
 import AppButton from './components/AppButton/AppButton';
 import AppCategory from './components/AppCategory/AppCategory';
-import { fetchAppData } from './controller/API';
+import { fetchAppData, updateAppData } from './controller/API';
 import { useEffect, useState } from 'react';
 import Skeleton from '@mui/material/Skeleton';
 
@@ -13,9 +13,22 @@ function App() {
         fetchAppData(setAppData, setLoading);
     }, []);
 
+    const handleAddApp = (name, url, color, category) => {
+        const tempAppData = structuredClone(appData)
+        const app = {
+            url: url,
+            faviconURL: '',
+            color: color,
+        };
+
+        tempAppData[category][name] = app;
+        setAppData(tempAppData)
+        updateAppData(tempAppData)
+    };
+
     useEffect(() => {
-        console.log(appData);
-    }, [appData]);
+        console.log(appData)
+    }, [appData])
 
     return (
         <div className='app'>
@@ -60,15 +73,17 @@ function App() {
                         return (
                             <AppCategory
                                 title={category[0]}
-                                key={title.toString()}
+                                handleAdd={handleAddApp}
+                                key={category.toString()}
                             >
                                 {Object.entries(appData[category[0]]).map(
-                                    (info, index) => {
+                                    (info) => {
                                         return (
                                             <AppButton
-                                                key={index}
+                                                key={info.toString()}
                                                 url={info[1].url}
                                                 iconURL={info[1].faviconURL}
+                                                color={info[1].color}
                                             >
                                                 {info[0]}
                                             </AppButton>
