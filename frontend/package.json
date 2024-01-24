@@ -18,7 +18,8 @@
     "fast-average-color": "^9.4.0",
     "get-average-color": "^0.0.6",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "serve": "^14.2.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
