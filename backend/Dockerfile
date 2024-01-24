@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 3001
 
 # Start the application
-CMD node server.js
+CMD nodemon server.js
