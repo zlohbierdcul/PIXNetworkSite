@@ -1,0 +1,18 @@
+.dial button {
+    transition: all .7s ease-in-out !important;
+}
+
+.blink button {
+    animation: blinker 1s step-start infinite;
+  }
+  
+  @keyframes blinker {
+    50% {
+      scale: 1.1;
+      box-shadow: 0px 0px 20px 8px black;
+    }
+  }
+
+.dial:hover button {
+    animation: none;
+}

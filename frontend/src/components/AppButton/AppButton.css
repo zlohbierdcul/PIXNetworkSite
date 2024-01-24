@@ -48,4 +48,8 @@
         width: 100%;
         aspect-ratio: 1/1;
     }
+
+    .outter-app {
+        width: 100%;
+    }
 }

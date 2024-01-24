@@ -6,18 +6,23 @@ import { useState } from 'react';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import AddIcon from '@mui/icons-material/Add';
 import AddAppModal from '../AddAppModal/AddAppModal';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-function AppCategory({ title, handleAdd, children }) {
+function AppCategory({ title, handleAdd, isEdit, children }) {
     const [expanded, setExpanded] = useState(true);
     const [showAddApp, setShowAddApp] = useState(false);
 
     const addAppHandler = (name, url, color) => {
-        handleAdd(name, url, color, title)
-    }
+        handleAdd(name, url, color, title);
+    };
 
     return (
         <div className='category'>
-            <AddAppModal show={showAddApp} setShow={setShowAddApp} addHandler={addAppHandler}></AddAppModal>
+            <AddAppModal
+                show={showAddApp}
+                setShow={setShowAddApp}
+                addHandler={addAppHandler}
+            ></AddAppModal>
             <div className='category-title'>{title}</div>
             <div className='button-container'>
                 <IconButton
@@ -35,6 +40,24 @@ function AppCategory({ title, handleAdd, children }) {
                 >
                     <AddIcon></AddIcon>
                 </IconButton>
+                {isEdit && (
+                    <IconButton
+                        variant='secondary'
+                        size='small'
+                        sx={{
+                            marginX: '.5rem',
+                            background: '#343434',
+                            '&:hover': {
+                                background: '#3a3a3a',
+                                scale: '1.05',
+                            },
+                            color: '#dd5151',
+                            transition: 'all 0.5s ease-in-out',
+                        }}
+                    >
+                        <DeleteIcon />
+                    </IconButton>
+                )}
                 <IconButton
                     size='small'
                     style={{
@@ -69,6 +92,7 @@ function AppCategory({ title, handleAdd, children }) {
 AppCategory.propTypes = {
     title: PropTypes.string.isRequired,
     handleAdd: PropTypes.func.isRequired,
+    isEdit: PropTypes.bool.isRequired,
     children: PropTypes.node,
 };
 

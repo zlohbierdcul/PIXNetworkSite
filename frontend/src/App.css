@@ -119,3 +119,47 @@ body {
 .category-skeleton {
     width: 100%;
 }
+
+.wait-icon {
+    font-size: 5rem;
+    opacity: 0.2;
+    transition: animation 0.8s ease-in-out !important;
+    scale: 1.1;
+    animation: wait-blinker 4s step-start infinite;
+    animation-timing-function: ease-in;
+    transform: rotate(90deg);
+    margin-bottom: 1rem;
+}
+
+.wait-text {
+    color: #303030;
+}
+
+.wait-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15%;
+}
+
+@keyframes wait-blinker {
+    70% {
+        scale: 1.5;
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 576px) {
+    .wait-container {
+        padding-top: 50% !important;
+    }
+
+    .wait-icon {
+        font-size: 3rem !important;
+    }
+
+    .wait-text {
+        font-size: 1rem;
+    }
+}
