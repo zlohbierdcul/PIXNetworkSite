@@ -121,8 +121,8 @@ body {
 }
 
 .wait-icon {
-    font-size: 5rem;
-    opacity: 0.2;
+    font-size: 4rem !important;
+    opacity: 0.2; 
     transition: animation 0.8s ease-in-out !important;
     scale: 1.1;
     animation: wait-blinker 4s step-start infinite;
@@ -132,6 +132,7 @@ body {
 }
 
 .wait-text {
+    font-size: 1.2rem;
     color: #303030;
 }
 

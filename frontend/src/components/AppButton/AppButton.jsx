@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const AppButton = ({ url, iconURL, color, isEdit, children }) => {
+const AppButton = ({ title, url, iconURL, color, isEdit, handleDelete }) => {
     return (
         <div
             className='outter-app'
@@ -34,7 +34,7 @@ const AppButton = ({ url, iconURL, color, isEdit, children }) => {
                 >
                     {iconURL.length > 0 ? (
                         <img
-                            id={children + '-id'}
+                            id={title + '-id'}
                             src={iconURL}
                             alt='Icon'
                         />
@@ -43,40 +43,40 @@ const AppButton = ({ url, iconURL, color, isEdit, children }) => {
                             sx={{ width: '55px', height: '55px' }}
                         ></QuestionMarkIcon>
                     )}
-                    <span>{children}</span>
+                    <span>{title}</span>
                 </div>
             </Tooltip>
-            {true && (
-                <IconButton
-                    variant='secondary'
-                    size='small'
-                    sx={{
-                        scale: isEdit ? 1 : 0,
-                        position: 'absolute',
-                        top: -15,
-                        right: -15,
-                        background: '#dd5151',
-                        '&:hover': {
-                            background: '#ff5151',
-                            scale: '1.05',
-                        },
-                        color: '#121212',
-                        transition: 'all 0.3s ease-in-out',
-                    }}
-                >
-                    <DeleteIcon />
-                </IconButton>
-            )}
+            <IconButton
+                variant='secondary'
+                size='small'
+                sx={{
+                    scale: isEdit ? 1 : 0,
+                    position: 'absolute',
+                    top: -15,
+                    right: -15,
+                    background: '#dd5151',
+                    '&:hover': {
+                        background: '#ff5151',
+                        scale: '1.05',
+                    },
+                    color: '#121212',
+                    transition: 'all 0.3s ease-in-out',
+                }}
+                onClick={handleDelete}
+            >
+                <DeleteIcon />
+            </IconButton>
         </div>
     );
 };
 
 AppButton.propTypes = {
+    title: PropTypes.node.isRequired,
     url: PropTypes.string.isRequired,
     iconURL: PropTypes.string.isRequired,
+    handleDelete: PropTypes.func.isRequired,
     color: PropTypes.array,
     isEdit: PropTypes.bool,
-    children: PropTypes.node.isRequired,
 };
 
 export default AppButton;

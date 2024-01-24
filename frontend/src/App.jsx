@@ -46,11 +46,26 @@ function App() {
         setIsEdit(!isEdit); // TODO: !isEdit -> true
     };
 
+    const handleCategoryDelete = (category) => {
+        const tempAppData = structuredClone(appData);
+        delete tempAppData[category];
+        setAppData(tempAppData);
+        updateAppData(tempAppData);
+    };
+
+    const handleAppDelete = (category, title) => {
+        const tempAppData = structuredClone(appData);
+        delete tempAppData[category][title];
+        setAppData(tempAppData);
+        updateAppData(tempAppData);
+    };
+
     return (
         <>
             <DialButton
                 handleAdd={handleDialAdd}
                 handleEdit={handleDialEdit}
+                isEdit={isEdit}
                 blink={appData ? Object.entries(appData).length === 0 : false}
             ></DialButton>
             <div className='app'>
@@ -103,19 +118,25 @@ function App() {
                                     handleAdd={handleAddApp}
                                     key={category.toString()}
                                     isEdit={isEdit}
+                                    handleDelete={handleCategoryDelete}
                                 >
                                     {Object.entries(appData[category[0]]).map(
                                         (info) => {
                                             return (
                                                 <AppButton
                                                     key={info.toString()}
+                                                    title={info[0]}
                                                     url={info[1].url}
                                                     iconURL={info[1].faviconURL}
+                                                    handleDelete={() => {
+                                                        handleAppDelete(
+                                                            category[0],
+                                                            info[0]
+                                                        );
+                                                    }}
                                                     color={info[1].color}
                                                     isEdit={isEdit}
-                                                >
-                                                    {info[0]}
-                                                </AppButton>
+                                                />
                                             );
                                         }
                                     )}
@@ -126,8 +147,13 @@ function App() {
 
                     {appData && Object.entries(appData).length === 0 ? (
                         <div className='wait-container'>
-                            <AutoModeIcon color='secondary' className='wait-icon'></AutoModeIcon>
-                            <h4 className='wait-text'>No services or categories added yet.</h4>
+                            <AutoModeIcon
+                                color='secondary'
+                                className='wait-icon'
+                            ></AutoModeIcon>
+                            <h4 className='wait-text'>
+                                No services or categories added yet.
+                            </h4>
                         </div>
                     ) : null}
                 </div>

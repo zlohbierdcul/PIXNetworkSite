@@ -3,6 +3,7 @@ import { Button, Modal, TextField, IconButton } from '@mui/material';
 import Box from '@mui/material/Box';
 import CloseIcon from '@mui/icons-material/Close';
 import PropTypes from 'prop-types';
+import './AddCategoryModal.css';
 
 const style = {
     position: 'absolute',
@@ -25,6 +26,8 @@ const AddCategoryModal = ({ show, setShow, addHandler }) => {
     const [nameError, setNameError] = useState(false);
 
     const handleClose = () => {
+        setName('');
+        setNameError(false);
         setShow(false);
     };
 
@@ -33,7 +36,7 @@ const AddCategoryModal = ({ show, setShow, addHandler }) => {
 
         if (name.length > 0) {
             handleClose();
-            addHandler(name)
+            addHandler(name);
         }
     };
 

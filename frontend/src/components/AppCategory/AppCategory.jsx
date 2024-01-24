@@ -8,7 +8,7 @@ import AddIcon from '@mui/icons-material/Add';
 import AddAppModal from '../AddAppModal/AddAppModal';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-function AppCategory({ title, handleAdd, isEdit, children }) {
+function AppCategory({ title, handleAdd, handleDelete, isEdit, children }) {
     const [expanded, setExpanded] = useState(true);
     const [showAddApp, setShowAddApp] = useState(false);
 
@@ -54,6 +54,7 @@ function AppCategory({ title, handleAdd, isEdit, children }) {
                             color: '#dd5151',
                             transition: 'all 0.5s ease-in-out',
                         }}
+                        onClick={() => handleDelete(title)}
                     >
                         <DeleteIcon />
                     </IconButton>
@@ -92,6 +93,7 @@ function AppCategory({ title, handleAdd, isEdit, children }) {
 AppCategory.propTypes = {
     title: PropTypes.string.isRequired,
     handleAdd: PropTypes.func.isRequired,
+    handleDelete: PropTypes.func.isRequired,
     isEdit: PropTypes.bool.isRequired,
     children: PropTypes.node,
 };

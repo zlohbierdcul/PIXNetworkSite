@@ -7,8 +7,9 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import "./DialButton.css"
+import EditOffIcon from '@mui/icons-material/EditOff';
 
-function DialButton({ handleAdd, handleEdit, blink }) {
+function DialButton({ handleAdd, handleEdit, isEdit, blink }) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -17,7 +18,7 @@ function DialButton({ handleAdd, handleEdit, blink }) {
         { icon: <AddIcon />, name: 'Add category', handler: handleAdd },
     ] : [
         { icon: <AddIcon />, name: 'Add category', handler: handleAdd },
-        { icon: <EditIcon />, name: 'Edit apps', handler: handleEdit },
+        { icon: isEdit ? <EditOffIcon/> : <EditIcon />, name: isEdit ? 'Disable edit' : 'Enable edit', handler: handleEdit },
     ];
 
     return (
@@ -66,6 +67,7 @@ function DialButton({ handleAdd, handleEdit, blink }) {
 DialButton.propTypes = {
     handleAdd: PropTypes.func.isRequired,
     handleEdit: PropTypes.func.isRequired,
+    isEdit: PropTypes.bool,
     blink: PropTypes.bool,
 };
 

@@ -35,6 +35,13 @@ const AddAppModal = ({ show, setShow, addHandler }) => {
     const [colorB, setColorB] = useState(255);
 
     const handleClose = () => {
+        setName('');
+        setUrl('');
+        setNameError(false);
+        setUrlError(false);
+        setColorR(255);
+        setColorG(255);
+        setColorB(255);
         setShow(false);
     };
 
@@ -118,7 +125,7 @@ const AddAppModal = ({ show, setShow, addHandler }) => {
                             background: '#323232',
                             borderRadius: '5px',
                             minWidth: '50px',
-                            maxWidth: "90px",
+                            maxWidth: '90px',
                             flexGrow: 2,
                         }}
                         onChange={(e) => setColorR(e.target.value)}
@@ -133,7 +140,7 @@ const AddAppModal = ({ show, setShow, addHandler }) => {
                             background: '#323232',
                             borderRadius: '5px',
                             minWidth: '50px',
-                            maxWidth: "90px",
+                            maxWidth: '90px',
                             flexGrow: 2,
                         }}
                         onChange={(e) => setColorG(e.target.value)}
@@ -148,7 +155,7 @@ const AddAppModal = ({ show, setShow, addHandler }) => {
                             background: '#323232',
                             borderRadius: '5px',
                             minWidth: '50px',
-                            maxWidth: "90px",
+                            maxWidth: '90px',
                             flexGrow: 2,
                         }}
                         onChange={(e) => setColorB(e.target.value)}
