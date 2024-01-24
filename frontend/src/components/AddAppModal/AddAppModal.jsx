@@ -128,6 +128,7 @@ const AddAppModal = ({ show, setShow, addHandler }) => {
                             height: '56px',
                             borderRadius: '5px',
                             flexGrow: 1,
+                            minWidth: "35px",
                             background: `rgb(${colorR}, ${colorG}, ${colorB})`,
                         }}
                     ></div>

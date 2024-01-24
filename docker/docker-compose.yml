@@ -1,0 +1,19 @@
+version: '3'
+services:
+  pixnet-frontend:
+    image: ghcr.io/zlohbierdcul/pixnetworksite:main
+    networks:
+      - 'bridge'
+    ports:
+      - "80:3000"
+
+  pixnet-backend:
+    image: ghcr.io/zlohbierdcul/pixnetworksite_backend:main
+    networks:
+      - 'bridge'
+    ports:
+      - "3001:3001"
+
+networks:
+  bridge:
+    driver: bridge
