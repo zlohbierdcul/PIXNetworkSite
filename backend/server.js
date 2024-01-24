@@ -8,7 +8,7 @@ const fetchAllApps = require("./appUpdater")
 
 
 // Server Setup
-const PORT = 3001
+const PORT = 3002
 const app = express()
 
 app.use(express.json())
