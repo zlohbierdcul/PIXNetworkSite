@@ -4,6 +4,7 @@
 
 .blink button {
     animation: blinker 1s step-start infinite;
+    animation-timing-function: ease-in;
   }
   
   @keyframes blinker {
