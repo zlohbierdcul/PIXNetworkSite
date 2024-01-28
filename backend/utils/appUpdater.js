@@ -3,6 +3,7 @@ const { mkdir } = require('fs/promises');
 const { Readable } = require('stream');
 const { finished } = require('stream/promises');
 const path = require('path');
+const checkWebsite = require('./siteChecker');
 
 var fetchFavicon = require('@meltwater/fetch-favicon').fetchFavicon;
 
@@ -18,11 +19,18 @@ const downloadFile = async (url, fileName) => {
 
 const fetchAllApps = async () => {
     const fetchFaviconPromises = [];
-
-    let appdata = require('./data/appdata.json');
+    let appdata = JSON.parse(fs.readFileSync('data/appdata.json'));
 
     for (const [category, name] of Object.entries(appdata)) {
         for (const [name, info] of Object.entries(appdata[category])) {
+            const isSiteUp = await checkWebsite(info.url);
+            if (!isSiteUp) {
+                appdata[category][name]["isUp"] = false;
+                continue;
+            } else {
+                appdata[category][name]["isUp"] = true;
+            }
+
             if (info.faviconURL.length === 0) {
                 try {
                     const fetchPromise = fetchFavicon(info.url).then((d) => {

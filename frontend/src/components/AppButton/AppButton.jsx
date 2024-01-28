@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
-const AppButton = ({ title, url, iconURL, category, color, isEdit, handleDelete, setShowEdit, setAppInfo }) => {
+const AppButton = ({ title, url, iconURL, category, color, isEdit, isUp, handleDelete, setShowEdit, setAppInfo }) => {
     const handleEditClick = () => {
         const info = {
             category: category,
@@ -44,6 +44,7 @@ const AppButton = ({ title, url, iconURL, category, color, isEdit, handleDelete,
                     href={url}
                     onClick={() => window.open(url, '_blank')}
                 >
+                    <div className='indicator' style={{background: isUp ? "#0F0" : "#F00"}}></div>
                     {iconURL.length > 0 ? (
                         <img
                             id={title + '-id'}

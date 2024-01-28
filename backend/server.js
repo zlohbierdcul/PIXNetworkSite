@@ -3,7 +3,7 @@ const cors = require("cors")
 const bodyParser = require("body-parser")
 const fs = require('fs')
 const path = require('path')
-const fetchAllApps = require("./appUpdater")
+const fetchAllApps = require("./utils/appUpdater")
 
 
 
@@ -22,7 +22,7 @@ app.use(cors(corsOptions))
 
 app.get("/api/getAppData", async (req, res) => {
     await fetchAllApps()
-    const appdata = require("./data/appdata.json")
+    const appdata = require("./data/newappdata.json")
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(appdata));
 })

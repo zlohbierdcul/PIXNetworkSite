@@ -20,6 +20,10 @@ function App() {
 
     useEffect(() => {
         fetchAppData(setAppData, setLoading);
+        window.setTimeout(() => {
+            console.log("fetching data");
+            fetchAppData(setAppData, setLoading);
+        }, 20000)
     }, []);
 
     const handleAppAdd = (name, url, color, category) => {
@@ -171,6 +175,7 @@ function App() {
                                                     setAppInfo={setAppInfo}
                                                     color={info[1].color}
                                                     isEdit={isEdit}
+                                                    isUp={info[1].isUp}
                                                 />
                                             );
                                         }
