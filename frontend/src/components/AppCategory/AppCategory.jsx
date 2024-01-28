@@ -57,6 +57,7 @@ function AppCategory({
                 className='category-title'
                 onBlur={(e) => blurHandler(e)}
                 contentEditable={isEdit}
+                suppressContentEditableWarning={true}
             >
                 {title}
             </div>
