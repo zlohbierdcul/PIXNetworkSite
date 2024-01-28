@@ -10,6 +10,8 @@ import AutoModeIcon from '@mui/icons-material/AutoMode';
 import { renameKey } from './utils/jsonParser';
 import EditAppModal from './components/EditAppModal/EditAppModal';
 
+const FETCH_DELAY = 30000;
+
 function App() {
     const [loading, setLoading] = useState(true);
     const [appData, setAppData] = useState(null);
@@ -20,10 +22,9 @@ function App() {
 
     useEffect(() => {
         fetchAppData(setAppData, setLoading);
-        window.setTimeout(() => {
-            console.log("fetching data");
+        window.setInterval(() => {
             fetchAppData(setAppData, setLoading);
-        }, 20000)
+        },  FETCH_DELAY)
     }, []);
 
     const handleAppAdd = (name, url, color, category) => {
@@ -75,17 +76,16 @@ function App() {
         updateAppData(tempAppData);
     };
 
-    const handleAppEdit = (category, title, url, iconURL, color, oldTitle) => {
-        console.log(oldTitle)
-        console.log(title)
+    const handleAppEdit = async (category, title, url, iconURL, color, oldTitle) => {
         const tempAppData = structuredClone(appData);
         if (oldTitle) renameKey(tempAppData[category], oldTitle, title);
-        console.log(tempAppData[category])
         tempAppData[category][title]['url'] = url;
         tempAppData[category][title]['faviconURL'] = iconURL;
         tempAppData[category][title]['color'] = color;
         setAppData(tempAppData);
-        updateAppData(tempAppData);
+        updateAppData(tempAppData).then(() => {
+            fetchAppData(setAppData, setLoading)
+        });
     };
 
     return (

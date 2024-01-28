@@ -1,9 +1,1 @@
-{
-    "General": {
-        "Googleeeee": {
-            "url": "https://facebook.com",
-            "faviconURL": "https://static.xx.fbcdn.net/rsrc.php/yv/r/B8BxsscfVBr.ico",
-            "color": [255, 255, 0]
-        }
-    }
-}
+{"General":{"Google":{"url":"https://google.com","faviconURL":"https://google.com/favicon.ico","color":[211,148,238],"isUp":false}}}

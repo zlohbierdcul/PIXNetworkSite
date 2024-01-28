@@ -1,5 +1,6 @@
 
 export const fetchAppData = async (setAppData, setLoading) => {
+    console.log("fetching data")
     const res = await fetch(
         import.meta.env.VITE_BACKEND_URL + '/api/getAppData',
         {
@@ -15,7 +16,7 @@ export const updateAppData = async (newAppData) => {
         appData: newAppData,
     };
 
-    fetch(import.meta.env.VITE_BACKEND_URL + '/api/updateAppData', {
+    return await fetch(import.meta.env.VITE_BACKEND_URL + '/api/updateAppData', {
         method: 'POST',
         headers: {
             Accept: 'application/json',
