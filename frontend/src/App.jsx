@@ -122,7 +122,7 @@ function App() {
                     <span>o</span>
                     <span>rk</span>
                 </div>
-                <div className='category-container'>
+                <div className='container-fluid'>
                     {loading ? (
                         <>
                             <Skeleton
