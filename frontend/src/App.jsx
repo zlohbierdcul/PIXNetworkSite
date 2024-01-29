@@ -25,6 +25,12 @@ function App() {
         window.setInterval(() => {
             fetchAppData(setAppData, setLoading);
         },  FETCH_DELAY)
+
+        window.addEventListener("keydown", (e) => {
+            if (e.key === "Escape")  { // check if ESC Key
+                setIsEdit(false)
+            }
+        })
     }, []);
 
     const handleAppAdd = (name, url, color, category) => {
